@@ -50,6 +50,7 @@ The files and folders within `~/shared-folder` on the host will be made availabl
 ```cpp
 #include <Eigen/Eigen>
 #include <iostream>
+
 int main(int argc, char** argv)
   {
     std::cout << "Successfully included Eigen." << std::endl;
