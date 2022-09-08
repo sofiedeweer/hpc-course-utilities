@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>installation-mk</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<h1 id="installation-of-dependencies-mk-modules">Installation of dependencies: mk modules</h1>
+<h2 id="what-are-mk-modules">1. What are mk modules?</h2>
+<p><a href="https://github.com/elauksap/mk">mk modules</a> bundle a set of scientific libraries compiled under the same toolchain. Once installed, they provide the command module, that has several subcommands: - <code>module load</code>: loads the requested module. This creates a set of environment variables storing relevant paths for that library (e.g. <code>mkEigenPrefix</code>, <code>mkEigenInc</code>, …). Use <code>export | grep "mk "</code> to obtain a list - <code>module list</code>: shows a list of currently loaded modules - <code>module avail</code>: shows a list of all available modules (loaded or not) - <code>module --help</code>: shows a list of all the commands</p>
+<h2 id="install-on-a-native-linux-distribution">2. Install on a native Linux distribution</h2>
+<p>If you have a computer with a Linux operating system, you can install mk modules directly. Otherwise, skip to step 3. 1. Download the <a href="https://github.com/elauksap/mk/releases">latest release</a> 2. Extract it:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="fu">sudo</span> tar xzvf mk-version.tar.gz -C /</a></code></pre></div>
+<ol start="3" type="1">
+<li>To use the modules run <code>source /u/sw/etc/profile</code>. I you want to avoid typing it every time you open your terminal, modify your <code>~/.bashrc</code> file by adding</li>
+</ol>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb2-1" title="1"><span class="co"># mk.</span></a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="bu">export</span> <span class="va">mkPrefix=</span>/u/sw/</a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="bu">source</span> <span class="va">${mkPrefix}</span>/etc/profile</a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="ex">module</span> load gcc-glibc</a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="co"># module load &lt;module_name&gt; for any other needed module</span></a></code></pre></div>
+<h2 id="install-using-docker">3. Install using Docker</h2>
+<h3 id="linux-or-mac">3.1 Linux or Mac</h3>
+<p>For computers running on Linux or Mac, you can skip to step 3.3.</p>
+<h3 id="windows">3.2 Windows</h3>
+<p>Since Docker relies on sharing a Linux kernel with its host you will lose some performances by running Docker on Windows. Moreover, Docker is avaiable on Windows only for the following versions: * Windows 11 64-bit: Home or Pro version 21H2 or higher, or Enterprise or Education version 21H2 or higher. * Windows 10 64-bit: Home or Pro 21H1 (build 19043) or higher, or Enterprise or Education 20H2 (build 19042) or higher.</p>
+<p>To check you version press WINDOWS + R, enter <code>winver</code> and press OK. If your version is compatible with Docker you can decide to either use Docker (skip to 3.2) or use a dual boot (skip to 3.2.1). If you do not meet the requirements, you will need to use a dual boot (skip to 3.2.1).</p>
+<h4 id="dual-boot">3.2.1 Dual Boot</h4>
+<p>Dual-booting is the act of installing two operating systems on a single computer, and being able to choose which one to boot. In particular, you will need to install a Linux distribution, we suggest Ubuntu 20.04 LTS or 22.04 LTS.</p>
+<p>To do this you can follow the <a href="https://help.ubuntu.com/community/WindowsDualBoot">official guide</a> (which is a bit dated) or this <a href="https://itsfoss.com/install-ubuntu-1404-dual-boot-mode-windows-8-81-uefi/">unofficial tutorial</a>.</p>
+<p>After you are done you can either install the mk modules natively (step 2) or on Docker (step 3.3).</p>
+<h3 id="install">3.2 Install</h3>
+<ol type="1">
+<li>Install Docker following the instruction on the <a href="https://docs.docker.com/get-docker/">official guide</a>. Please read it thoroughly.</li>
+<li>From a terminal with admin privileges pull the Docker image:</li>
+</ol>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb3-1" title="1"><span class="ex">docker</span> pull elauksap/mk</a></code></pre></div>
+<ol start="3" type="1">
+<li><p>The image is just a snapshot of the state of a Linux OS, it is like a saving point from where you want to start. You can check your images with <code>docker image ls</code>.</p></li>
+<li>To use your image you need to create a Docker container. To make a parallel with virtual machines, the Docker image is like the .iso of the OS, but then you have to install it. We want to create a container with the image we have just downloaded, give it a name (<code>--name hpc-courses-mk</code>) to remember its function and share a folder with the host so that we can exchange file easily (<code>-v /path/to/host/folder:/root/shared-folder</code>). The complete command is:</li>
+</ol>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb4-1" title="1"><span class="ex">docker</span> run --name hpc-courses-mk -v /path/to/host/folder:/root/shared-folder -it elauksap/mk</a></code></pre></div>
+<p><strong>WARNING:</strong> to avoid problems <code>/path/to/host/folder</code> should not contain white spaces or special characters. For instance you can make your shared folder with the command <code>mkdir shared-folder</code> and than <code>/path/to/host/folder</code> would be <code>C:/Users/matteo/shared-folder</code> on Windows or <code>~/shared-folder</code> on Linux-like OS.</p>
+<ol start="5" type="1">
+<li>We can check our containers and their status with the command</li>
+</ol>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb5-1" title="1"><span class="ex">docker</span> ps -a</a></code></pre></div>
+<ol start="6" type="1">
+<li>Once you have created your container remember to <strong>do not</strong> use again the commad <code>run</code> but just <code>start</code> and <code>stop</code>. Otherwise you will create every time a new container. For instance to turn on the container and jump into it:</li>
+</ol>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb6-1" title="1"><span class="ex">docker</span> start hpc-courses-mk</a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="ex">docker</span> exec -it hpc-courses-mk /bin/bash</a></code></pre></div>
+<ol start="7" type="1">
+<li><p>Inside the container you can quit with <code>exit</code> and then stop the container with <code>docker stop hpc-courses-mk</code>.</p></li>
+<li>If you want to remove a container you creaded for mistake you can run:</li>
+</ol>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb7-1" title="1"><span class="ex">docker</span> rm <span class="op">&lt;</span>name-of-the-container<span class="op">&gt;</span></a></code></pre></div>
+<p>Always remember that documentation is your best friend! Do not panic, just type:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb8-1" title="1"><span class="ex">docker</span> --help</a></code></pre></div>
+<h2 id="test-the-installation">4. Test the installation</h2>
+<ol type="1">
+<li>Create a file <code>test-installation.cpp</code> with content:</li>
+</ol>
+<div class="sourceCode" id="cb9"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb9-1" title="1"><span class="pp">#include </span><span class="im">&lt;Eigen/Eigen&gt;</span></a>
+<a class="sourceLine" id="cb9-2" title="2"><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></a>
+<a class="sourceLine" id="cb9-3" title="3"></a>
+<a class="sourceLine" id="cb9-4" title="4"><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span>** argv)</a>
+<a class="sourceLine" id="cb9-5" title="5">  {</a>
+<a class="sourceLine" id="cb9-6" title="6">    <span class="bu">std::</span>cout &lt;&lt; <span class="st">&quot;Successfully included Eigen.&quot;</span> &lt;&lt; <span class="bu">std::</span>endl;</a>
+<a class="sourceLine" id="cb9-7" title="7">    <span class="cf">return</span> <span class="dv">0</span>;</a>
+<a class="sourceLine" id="cb9-8" title="8">  }</a></code></pre></div>
+<ol start="2" type="1">
+<li><p>Make sure the Eigen module is loaded: <code>module load eigen</code></p></li>
+<li>Compile and run the test:</li>
+</ol>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb10-1" title="1"><span class="ex">g++</span> -I <span class="va">${mkEigenInc}</span> test-installation.cpp -o test-installation</a>
+<a class="sourceLine" id="cb10-2" title="2"><span class="ex">./test-installation</span></a></code></pre></div>
+</body>
+</html>
