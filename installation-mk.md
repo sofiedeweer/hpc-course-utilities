@@ -10,7 +10,7 @@
 
 ## 2. Install on a native Linux distribution
 
-If you have a computer with a Linux operating system, you can install mk modules directly. Otherwise, skip to step 3.
+If you have a computer with a Linux operating system, you can install mk modules directly or skip to step 3.
 1. Download the [latest release](https://github.com/elauksap/mk/releases)
 2. Extract it:
 ```bash
