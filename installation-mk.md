@@ -3,7 +3,12 @@
 ## 1. What are mk modules?
 
 [mk modules](https://github.com/elauksap/mk) bundle a set of scientific libraries compiled under the same toolchain. Once installed, they provide the command module, that has several subcommands:
-- `module load <module name>`: loads the requested module. This creates a set of environment variables storing relevant paths for that library (e.g. `mkEigenPrefix`, `mkEigenInc`, ...). Use  `export | grep mk`  to obtain a list
+
+```
+module load <module name> 
+```
+
+loads the requested module. This creates a set of environment variables storing relevant paths for that library (e.g. `mkEigenPrefix`, `mkEigenInc`, ...). Use  `export | grep mk`  to obtain a list
 - `module list`: shows a list of currently loaded modules
 - `module avail`: shows a list of all available modules (loaded or not)
 - `module --help`: shows a list of all the commands
@@ -21,26 +26,29 @@ To check you version press WINDOWS + R, enter `winver` and press OK. If your ver
 
 ### 2.2. Pull the Docker image
 From a terminal with admin privileges, run the command
-```bash
+
+```
 docker pull elauksap/hpc_courses
 ```
+
 The image is just a snapshot of the state of a Linux OS, it is like a saving point from where you want to start. You can check your images with `docker image ls`.
 
 ### 2.3. Use the Docker image 
 To use your image you need to create a Docker container. To make a parallel with virtual machines, the Docker image is like the .iso of the OS, but then you have to install it. We want to create a container with the image we have just downloaded, give it a name (`--name hpc-courses`) to remember its function and share a folder with the host so that we can exchange file easily (`-v /path/to/host/folder:/home/jellyfish/shared-folder`). The complete command is:
-```bash
+
+```
 docker run --name hpc-courses -v /path/to/host/folder:/home/jellyfish/shared-folder -it elauksap/hpc_courses
 ```
 
 **WARNING:** to avoid problems `/path/to/host/folder` should not contain white spaces or special characters. For instance you can make your shared folder with the command `mkdir shared-folder` and than `/path/to/host/folder` would be `C:/Users/matteo/shared-folder` on Windows or `~/shared-folder` on Linux-like OS.
 
 You can leave the container and return to your OS with `exit`. If you want to remove a container you creaded for mistake you can run:
-```bash
+```
 docker rm <name-of-the-container>
 ```
 
 Always remember that documentation is your best friend! Do not panic, just type:
-```bash
+```
 docker --help
 ```
 
@@ -62,21 +70,23 @@ After you're done, you can install Docker on the Linux OS, following steps 2.1 t
 ## 4. Test the installation
 
 1. Create a file `test-installation.cpp` with content:
-```cpp
+
+```
 #include <Eigen/Eigen>
 #include <iostream>
 
 int main(int argc, char** argv)
-  {
-    std::cout << "Successfully included Eigen." << std::endl;
-    return 0;
-  }
+{
+        std::cout << "Successfully included Eigen." << std::endl;
+        return 0;
+}
 ```
 
 2. Make sure the Eigen module is loaded: `module load eigen`
 
 3. Compile and run the test:
-```bash
+
+```
 g++ -I ${mkEigenInc} test-installation.cpp -o test-installation
 ./test-installation
 ```
