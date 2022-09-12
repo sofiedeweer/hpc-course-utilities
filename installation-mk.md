@@ -48,12 +48,12 @@ docker run --name hpc-courses -v /path/to/host/folder:/home/jellyfish/shared-fol
 You have now created a container. To turn on the container type:
 
 ```
-docker start hpc-courses-mk
+docker start hpc-courses
 ```
 To enter into the container run:
 
 ```
-docker exec -it hpc-courses-mk /bin/bash
+docker exec -it hpc-courses /bin/bash
 ```
 You can leave the container and return to your OS with `exit`. You can check your containers and their status with the command
 
@@ -63,7 +63,7 @@ docker ps -a
 If the status of the container is `Up`, you can stop it with
 
 ```
-docker stop hpc-courses-mk
+docker stop hpc-courses
 ```
 Once you have created your container remember to **do not** use again the commad `run` but just `start`. Otherwise you will create every time a new container. If you want to remove a container you creaded for mistake you can run:
 
