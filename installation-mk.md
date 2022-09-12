@@ -17,7 +17,7 @@ As a first step, install the [Docker container environment](https://www.docker.c
 * Windows 11 64-bit: Home or Pro version 21H2 or higher, or Enterprise or Education version 21H2 or higher.
 * Windows 10 64-bit: Home or Pro 21H1 (build 19043) or higher, or Enterprise or Education 20H2 (build 19042) or higher.
 
-To check you version press WINDOWS + R, enter `winver` and press OK. If your version is not compatible with Docker, you will need to use **dual boot**. See Section X.X.
+To check you version press WINDOWS + R, enter `winver` and press OK. If your version is not compatible with Docker, you will need to use **dual boot**. See Section 2.4.
 
 ### 2.2. Pull the Docker image
 From a terminal with admin privileges, run the command
