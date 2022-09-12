@@ -8,12 +8,15 @@
 module load <module name> 
 ```
 
-loads the requested module. This creates a set of environment variables storing relevant paths for that library (e.g. `mkEigenPrefix`, `mkEigenInc`, ...). Use  `export | grep mk`  to obtain a list
-- `module list`: shows a list of currently loaded modules
-- `module avail`: shows a list of all available modules (loaded or not)
-- `module --help`: shows a list of all the commands
+loads the requested module. This creates a set of environment variables storing relevant paths for that library (e.g. `mkEigenPrefix`, `mkEigenInc`, ...). Use
+
+- `export | grep mk`  to obtain a list
+- `module list`: to show a list of currently loaded modules
+- `module avail`: to show a list of all available modules (loaded or not)
+- `module --help`: to show a list of all the commands
 
 ## 2. Installation
+![Installation Flowchart](./assets/installation-flowchart.png)
 
 ### 2.1. Install Docker
 As a first step, install the [Docker container environment](https://www.docker.com/). You can follow the instruction on the [official guide](https://docs.docker.com/get-docker/). Please read it thoroughly.
@@ -42,7 +45,28 @@ docker run --name hpc-courses -v /path/to/host/folder:/home/jellyfish/shared-fol
 
 **WARNING:** to avoid problems `/path/to/host/folder` should not contain white spaces or special characters. For instance you can make your shared folder with the command `mkdir shared-folder` and than `/path/to/host/folder` would be `C:/Users/matteo/shared-folder` on Windows or `~/shared-folder` on Linux-like OS.
 
-You can leave the container and return to your OS with `exit`. If you want to remove a container you creaded for mistake you can run:
+You have now created a container. To turn on the container type:
+
+```
+docker start hpc-courses-mk
+```
+To enter into the container run:
+
+```
+docker exec -it hpc-courses-mk /bin/bash
+```
+You can leave the container and return to your OS with `exit`. You can check your containers and their status with the command
+
+```
+docker ps -a
+```
+If the status of the container is `Up`, you can stop it with
+
+```
+docker stop hpc-courses-mk
+```
+Once you have created your container remember to **do not** use again the commad `run` but just `start`. Otherwise you will create every time a new container. If you want to remove a container you creaded for mistake you can run:
+
 ```
 docker rm <name-of-the-container>
 ```
@@ -69,7 +93,7 @@ After you're done, you can install Docker on the Linux OS, following steps 2.1 t
 
 ## 4. Test the installation
 
-1. Create a file `test-installation.cpp` with content:
+1. Using VS Code, open the shared folder and create a file `test-installation.cpp` with content:
 
 ```
 #include <Eigen/Eigen>
@@ -82,7 +106,9 @@ int main(int argc, char** argv)
 }
 ```
 
-2. Make sure the Eigen module is loaded: `module load eigen`
+2. Change the current directory to the shared folder `cd /home/jellyfish/shared-folder`.
+
+3. In the container, make sure the Eigen module is loaded: `module load eigen`.
 
 3. Compile and run the test:
 
