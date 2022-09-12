@@ -27,9 +27,9 @@ docker pull elauksap/hpc_courses
 The image is just a snapshot of the state of a Linux OS, it is like a saving point from where you want to start. You can check your images with `docker image ls`.
 
 ### 2.3. Use the Docker image 
-To use your image you need to create a Docker container. To make a parallel with virtual machines, the Docker image is like the .iso of the OS, but then you have to install it. We want to create a container with the image we have just downloaded, give it a name (`--name hpc-courses-mk`) to remember its function and share a folder with the host so that we can exchange file easily (`-v /path/to/host/folder:/home/jellyfish/shared-folder`). The complete command is:
+To use your image you need to create a Docker container. To make a parallel with virtual machines, the Docker image is like the .iso of the OS, but then you have to install it. We want to create a container with the image we have just downloaded, give it a name (`--name hpc-courses`) to remember its function and share a folder with the host so that we can exchange file easily (`-v /path/to/host/folder:/home/jellyfish/shared-folder`). The complete command is:
 ```bash
-docker run --name hpc-courses-mk -v /path/to/host/folder:/home/jellyfish/shared-folder -it elauksap/mk
+docker run --name hpc-courses -v /path/to/host/folder:/home/jellyfish/shared-folder -it elauksap/hpc_courses
 ```
 
 **WARNING:** to avoid problems `/path/to/host/folder` should not contain white spaces or special characters. For instance you can make your shared folder with the command `mkdir shared-folder` and than `/path/to/host/folder` would be `C:/Users/matteo/shared-folder` on Windows or `~/shared-folder` on Linux-like OS.
@@ -51,7 +51,15 @@ Before proceeding we suggest you to backup you data. To install a Dual Boot you 
 
 After you're done, you can install Docker on the Linux OS, following steps 2.1 to 2.3 above.
 
-## 3. Test the installation
+## 3. Editing files
+
+1. Install a text editor on the host OS (i.e. the one in which you installed Docker). We advise you to use [Visual Studio Code](https://code.visualstudio.com/), which is available for Linux, Windows and MacOS.
+
+2. Create and edit files inside the shared folder, so that they will be visible to both the host and the Docker container.
+
+3. You will edit files from the host OS, and compile them from inside the Docker container.
+
+## 4. Test the installation
 
 1. Create a file `test-installation.cpp` with content:
 ```cpp
