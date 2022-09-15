@@ -20,10 +20,10 @@ You can assign a value to a variable with the equal sign **(no spaces!)**, for i
 ## Basic Bash Commands
 - `pwd` stands for **Print working directory** and it points to the current working directory, that is, the directory that the shell is currently looking at. It’s also the default place where the shell commands will look for data files.
 - `ls` stands for a **List** and it lists the contents of a directory. ls usually starts out looking at our home directory. This means if we print ls by itself, it will always print the contents of the current directory.
-- `cd` stands for **Change directory** and changes the active directory to the path specified. 
+- `cd` stands for **Change directory** and changes the active directory to the path specified.
 - `mkdir` stands for **Make directory** and is used to make a new directory or a folder.
 - `mv` stands for **Move** and it moves one or more files or directories from one place to another. We need to specify what we want to move, i.e., the source and where we want to move them, i.e., the destination.
-- `touch` command is used to create new, empty files. It is also used to change the timestamps on existing files and directories. 
+- `touch` command is used to create new, empty files. It is also used to change the timestamps on existing files and directories.
 - `rm` stands for **Remove** and it removes files or directories. By default, it does not remove directories, but if used as `rm -r *` within a directory, then every directory and file inside that directory is deleted (`*` is a special characters that matches everything).
 
 ### Exercises
@@ -49,9 +49,9 @@ With `wget` you can retrieve content from web servers. For instance, you can dow
 To unzip the file, simply type `gzip -dk mhd416a.mtx.gz`
 
 ## Other Commands, Pipelines and Filters
-- `cat` stands for concatenate and it reads a file and outputs its content. It can read any number of files, and hence the name concatenate. 
-- `wc` is short for word count. It reads a list of files and generates one or more of the following statistics: newline count, word count, and byte count.
-- `grep` or global regular expression print searches for lines with a given string or looks for a pattern in a given input stream.
+- `cat` stands for **Concatenate** and it reads a file and outputs its content. It can read any number of files, and hence the name concatenate.
+- `wc` is short for **Word count**. It reads a list of files and generates one or more of the following statistics: newline count, word count, and byte count.
+- `grep` stands for **Global regular expression print**. It searches for lines with a given string or looks for a pattern in a given input stream.
 
 We can add operators between commands in order to chain them togheter.
 - The pipe operator `|` (vertical bar), is a way to send the output of one command as an input to another command. E.g. with `cat /etc/passwd | grep jellyfish` you can check system informations about your user.
@@ -60,6 +60,6 @@ We can add operators between commands in order to chain them togheter.
 
 ### Exercises
 - Create a file with the current date (one command) and display its content
-- Count the number of lines in the matrix `mhd416a.mtx` (*Suggestion:* use cat, wc and pipe)
-- List the entries of the matrix that are smaller than 1e-10 in absolute value. You can assume that all values are in exponential format and all values are greater than 1e-100 in absolute value. Count how many entries satisfy this criteria. (*Suggestion:* use cat, grep and wc )
+- Count the number of lines in the matrix `mhd416a.mtx` (*Suggestion:* use `cat`, `wc` and `|`)
+- List the entries of the matrix that are smaller than 1e-10 in absolute value. You can assume that all values are in exponential format and all values are greater than 1e-100 in absolute value. Count how many entries satisfy this criteria. (*Suggestion:* use `cat`, `grep`, `wc` and `|` )
 
