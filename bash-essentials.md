@@ -1,6 +1,6 @@
 # Bash Essentials
 
-Docker gives you the possibility to build and interact with another OS inside your machine. Running the command `docker exec -it hpc-courses-mk /bin/bash` will connect you with the bash shell of an OS where you will find all the tools for the hpc courses.
+Docker gives you the possibility to build and interact with another OS inside your machine. Running the command `docker exec -it hpc-courses /bin/bash` will connect you with the bash shell of an OS where you will find all the tools for the hpc courses.
 
 ## Shell
 Shell is a command line interface for running programs on a computer. The user types a bunch of commands at the prompt, the shell runs the programs for the user and then displays the output. The commands can be either directly entered by the user or read from a file called the shell script or shell program.
