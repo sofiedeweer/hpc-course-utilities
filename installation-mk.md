@@ -40,10 +40,10 @@ The image is just a snapshot of the state of a Linux OS, it is like a saving poi
 To use your image you need to create a Docker container. To make a parallel with virtual machines, the Docker image is like the .iso of the OS, but then you have to install it. We want to create a container with the image we have just downloaded, give it a name (`--name hpc-courses`) to remember its function and share a folder with the host so that we can exchange file easily (`-v /path/to/host/folder:/home/jellyfish/shared-folder`). The complete command is:
 
 ```
-docker run --name hpc-courses -v /path/to/host/folder:/home/jellyfish/shared-folder -it elauksap/hpc_courses
+docker run --name hpc-courses -v /path/to/host/folder:/home/jellyfish/shared-folder -it -d elauksap/hpc_courses
 ```
 
-**WARNING:** to avoid problems `/path/to/host/folder` should not contain white spaces or special characters. For instance you can make your shared folder with the command `mkdir shared-folder` and than `/path/to/host/folder` would be `C:/Users/matteo/shared-folder` on Windows or `~/shared-folder` on Linux-like OS.
+**WARNING:** to avoid problems `/path/to/host/folder` should not contain white spaces or special characters. For instance you can make your shared folder with the command `mkdir shared-folder` and than `/path/to/host/folder` would be `C:/Users/user/shared-folder` on Windows or `/home/user/shared-folder` on Linux-like OS (use global path starting with `/`, avoid using `~`).
 
 You have now created a container. To turn on the container type:
 
